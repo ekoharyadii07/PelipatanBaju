@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kontrol Pelipatan Badjoe</title>
+</head>
+<body>
+  <h1>Kontrol Pelipatan Badjoe</h1>
+  <button id="btnNyalakan">Nyalakan</button>
+  
+  <script>
+    document.getElementById('btnNyalakan').addEventListener('click', function() {
+      fetch('/nyalakan')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log(data); 
+          alert('Perangkat telah dihidupkan.');
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+          alert('Terjadi kesalahan saat mengirim permintaan.');
+        });
+    });
+  </script>
+</body>
+</html>
